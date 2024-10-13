@@ -1,12 +1,8 @@
-import tkinter as tk
+from tkinter import *
+from functools import partial
 
-window = tk.Tk()
-window.title("Hello world")
-window.geometry("300x300")
-
-hello = tk.Label(text="Hello world!")
-hello.pack()
-button = tk.Button(text="Click me!")     
-button.pack()
-
-tk.mainloop()
+if __name__ == "__main__":
+  root = Tk()
+  root.title("Temperature Converter")
+  converter = Converter()
+  root.mainloop()
