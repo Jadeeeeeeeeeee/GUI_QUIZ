@@ -5,7 +5,7 @@ class Converter:
   def __init__(self):
 
     button_font = ("Arial 16 bold")
-    button_fg = "#FFFFFF"
+    button_fg = "#000000"
 
     self.temp_frame = Frame(padx=10, pady=10)
     self.temp_frame.grid()
@@ -29,31 +29,31 @@ class Converter:
 
     self.start_button = Button(self.button_frame,
                               text="START QUIZ",
-                              bg="#9C0000",
+                              bg="#DAE8FC",
                               fg=button_fg,
                               font=button_font, width=12)
     self.start_button.grid(row=0, column=0, padx=5, pady=5)
 
     self.instruct_button = Button(self.button_frame,
                               text="INSTRUCTIONS",
-                              bg="#990099",
+                              bg="#C3ABD0",
                               fg=button_fg,
                               font=button_font, width=12)
     self.instruct_button.grid(row=0, column=1, padx=5, pady=5)
 
     self.history_button = Button(self.button_frame,
                               text="HISTORY",
-                              bg="#009900",
+                              bg="#FFB366",
                               fg=button_fg,
                               font=button_font, width=12)
     self.history_button.grid(row=1, column=0, padx=5, pady=5)
 
-    self.history_button = Button(self.button_frame,
-                              text="HISTORY",
-                              bg="#009900",
+    self.quit_button = Button(self.button_frame,
+                              text="QUIT",
+                              bg="#F8CECC",
                               fg=button_fg,
                               font=button_font, width=12)
-    self.history_button.grid(row=1, column=0, padx=5, pady=5)
+    self.quit_button.grid(row=1, column=1, padx=5, pady=5)
 
     
     
