@@ -16,9 +16,8 @@ class Converter:
     
     self.temp_heading.grid(row=0)
 
-    instructions = "Please select an action" \
-                   "then press one of the buttons " \
-                   "to take the quiz"
+    instructions = "Please select the actions you would like to do. Click start \n to start the quiz, instructions for instructions history to \n view previous quiz results, exit to exit the program"
+                            
 
     self.temp_instructions = Label(self.temp_frame,
                                   text=instructions)
@@ -49,7 +48,7 @@ class Converter:
     self.history_button.grid(row=1, column=0, padx=5, pady=5)
 
     self.quit_button = Button(self.button_frame,
-                              text="QUIT",
+                              text="QUIT/EXIT",
                               bg="#F8CECC",
                               fg=button_fg,
                               font=button_font, width=12)
