@@ -5,25 +5,61 @@ class Converter:
 
   def __init__(self):
 
-    #common format for all buttons
-    #Arial size 14 bold, with white text
-    button_font = ("Arial 12 bold")
-    button_fg = "#FFFFFF"
+    button_font = ("Arial 16 bold")
+    button_fg = "#000000"
 
-    # Set up the GUI Frame
     self.temp_frame = Frame(padx=10, pady=10)
     self.temp_frame.grid()
 
-    #Conversion, help and history / export buttons
-    self.button_frame = Frame(padx=30, pady=30)
-    self.button_frame.grid(row=0)
+    self.temp_heading = Label(self.temp_frame,
+                             text="Capital City Quiz",
+                             font=("Arial 16 bold"))
+
+    self.temp_heading.grid(row=0)
+
+    instructions = "Please select the actions you would like to do. Click start " \
+                   "to start the quiz, instructions for instructions history to" \
+                   "view previous quiz results, exit to exit the program"
+
+
+    self.temp_instructions = Label(self.temp_frame,
+                                  text=instructions,
+                                  wraplength=300,
+                                  width=40,
+                                  justify="left")
+    self.temp_instructions.grid(row=1)
+
+    self.button_frame = Frame(self.temp_frame)
+    self.button_frame.grid(row=4)
+
+    self.start_button = Button(self.button_frame,
+                              text="Start Quiz",
+                              bg="#DAE8FC",
+                              fg=button_fg,
+                              font=button_font, width=10)
+    self.start_button.grid(row=0, column=0, padx=5, pady=5)
+
+    self.history_button = Button(self.button_frame,
+                              text="History",
+                              bg="#FFB366",
+                              fg=button_fg,
+                              font=button_font, width=10)
+    self.history_button.grid(row=1, column=0, padx=5, pady=5)
+
+    self.quit_button = Button(self.button_frame,
+                              text="Quit/Exit",
+                              bg="#F8CECC",
+                              fg=button_fg,
+                              font=button_font, width=10)
+    self.quit_button.grid(row=1, column=1, padx=5, pady=5)
 
     self.to_instruct_button = Button(self.button_frame,
-                                   text="Help / Info",
-                                   bg="#CC6600",
-                                   fg=button_fg, width=12,
-                                   font=button_font, command=self.to_instruct)
-    self.to_instruct_button.grid(row=1, column=0, padx=5, pady=5)
+                           text="Instructions",
+                           bg="#C3ABD0",
+                           fg=button_fg,
+                           font=button_font, width=10, command=self.to_instruct)
+    
+    self.to_instruct_button.grid(row=0, column=1, padx=5, pady=5)
 
   def to_instruct(self):
    DisplayInstructions(self)
@@ -79,8 +115,9 @@ class DisplayInstructions:
 
   def close_instructions(self, partner):
     #Put help button back to normal...
-    partner.to_help_button.config(state=NORMAL)
+    partner.to_instruct_button.config(state=NORMAL)
     self.instructions_box.destroy()
+
 
 
 
