@@ -8,68 +8,57 @@ class Converter:
     button_font = ("Arial 16 bold")
     button_fg = "#000000"
 
-    self.quiz_frame = Frame(padx=10, pady=10)
-    self.quiz_frame.grid()
+    self.temp_frame = Frame(padx=10, pady=10)
+    self.temp_frame.grid()
 
-    self.quiz_heading = Label(self.quiz_frame,
+    self.temp_heading = Label(self.temp_frame,
                              text="Capital City Quiz",
                              font=("Arial 16 bold"))
 
-    self.quiz_heading.grid(row=0)
+    self.temp_heading.grid(row=0)
 
     instructions = "Please select the actions you would like to do. Click start " \
                    "to start the quiz, instructions for instructions history to" \
                    "view previous quiz results, exit to exit the program"
 
 
-    self.quiz_instructions = Label(self.quiz_frame,
+    self.temp_instructions = Label(self.temp_frame,
                                   text=instructions,
-                                  wraplength=250,
+                                  wraplength=300,
                                   width=40,
                                   justify="left")
-    self.quiz_instructions.grid(row=1)
+    self.temp_instructions.grid(row=1)
 
-    self.quiz_entry = Entry(self.quiz_entry,
-                           font=("Arial 14"))
-
-    self.quiz_entry.grid(row=2, padx=10, pady=10)
-
-    error = "Please enter a letter"
-    self.quiz_error = Label(self.quiz_frame, text=error,
-                           fg="9C0000")
-    self.quiz_error.grid(row=3)
-    
-
-    self.button_frame = Frame(self.quiz_frame)
+    self.button_frame = Frame(self.temp_frame)
     self.button_frame.grid(row=4)
 
     self.start_button = Button(self.button_frame,
                               text="Start Quiz",
                               bg="#DAE8FC",
                               fg=button_fg,
-                              font=button_font, width=12)
+                              font=button_font, width=10)
     self.start_button.grid(row=0, column=0, padx=5, pady=5)
 
     self.history_button = Button(self.button_frame,
                               text="History",
                               bg="#FFB366",
                               fg=button_fg,
-                              font=button_font, width=12)
+                              font=button_font, width=10)
     self.history_button.grid(row=1, column=0, padx=5, pady=5)
 
     self.quit_button = Button(self.button_frame,
                               text="Quit/Exit",
                               bg="#F8CECC",
                               fg=button_fg,
-                              font=button_font, width=12)
+                              font=button_font, width=10)
     self.quit_button.grid(row=1, column=1, padx=5, pady=5)
 
     self.to_instruct_button = Button(self.button_frame,
                            text="Instructions",
                            bg="#C3ABD0",
                            fg=button_fg,
-                           font=button_font, width=12, command=self.to_instruct)
-    
+                           font=button_font, width=10, command=self.to_instruct)
+
     self.to_instruct_button.grid(row=0, column=1, padx=5, pady=5)
 
   def to_instruct(self):
@@ -97,7 +86,7 @@ class DisplayInstructions:
     self.instructions_frame.grid()
 
     self.instructions_heading_label = Label(self.instructions_frame, bg=backround,
-                                   text="Intructions",font="Arial 14 bold")
+                                   text="Help / Info",font="Arial 14 bold")
 
     self.instructions_heading_label.grid(row=0)
 
