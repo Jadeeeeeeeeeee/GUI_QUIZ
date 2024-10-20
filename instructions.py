@@ -62,11 +62,9 @@ class Converter:
 
 class DisplayInstructions:
 
-  def close_help(self, partner):
+  def close_instructions(self, partner):
     partner.to_instruct_button.config(state=NORMAL)
     self.instructions_box.destroy()
-
-
 
 
   def __init__(self, partner):
