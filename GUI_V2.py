@@ -1,7 +1,7 @@
 from tkinter import *
 from functools import partial
 
-class Converter:
+class GUI:
 
   def __init__(self):
 
@@ -125,5 +125,5 @@ class DisplayInstructions:
 if __name__ == "__main__":
   root = Tk()
   root.title("Capital City Quiz")
-  Converter()
+  GUI()
   root.mainloop()

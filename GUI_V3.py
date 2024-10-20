@@ -1,64 +1,66 @@
 from tkinter import *
 from functools import partial
 
-class Converter:
+class GUI:
 
   def __init__(self):
 
     button_font = ("Arial 16 bold")
     button_fg = "#000000"
 
-    self.instruction_frame = Frame(padx=10, pady=10)
-    self.instruction_frame.grid()
+    self.GUI_frame = Frame(padx=10, pady=10)
+    self.GUI_frame.grid()
 
-    self.instruction_heading = Label(self.instruction_frame,
+    self.GUI_heading = Label(self.GUI_frame,
                              text="Capital City Quiz",
                              font=("Arial 16 bold"))
 
-    self.instruction_heading.grid(row=0)
+    self.GUI_heading.grid(row=0)
 
     instructions = "Please select the actions you would like to do. Click start " \
                    "to start the quiz, instructions for instructions history to" \
                    "view previous quiz results, exit to exit the program"
 
 
-    self.temp_instructions = Label(self.instruction_frame,
+    self.GUI_instructions = Label(self.GUI_frame,
                                   text=instructions,
-                                  wraplength=300,
+                                  wraplength=250,
                                   width=40,
                                   justify="left")
-    self.temp_instructions.grid(row=1)
+    self.GUI_instructions.grid(row=1)
 
-    self.button_frame = Frame(self.instruction_frame,)
+
+    self.button_frame = Frame(self.GUI_frame)
     self.button_frame.grid(row=4)
 
     self.start_button = Button(self.button_frame,
                               text="Start Quiz",
                               bg="#DAE8FC",
                               fg=button_fg,
-                              font=button_font, width=9)
+                              font=button_font, width=12)
     self.start_button.grid(row=0, column=0, padx=5, pady=5)
-
-    self.instruct_button = Button(self.button_frame,
-                              text="Instructions",
-                              bg="#C3ABD0",
-                              fg=button_fg,
-                              font=button_font, width=9, command=self.to_instruct)
-    self.instruct_button.grid(row=0, column=1, padx=5, pady=5)
 
     self.history_button = Button(self.button_frame,
                               text="History",
                               bg="#FFB366",
                               fg=button_fg,
-                              font=button_font, width=9)
+                              font=button_font, width=12)
     self.history_button.grid(row=1, column=0, padx=5, pady=5)
 
     self.quit_button = Button(self.button_frame,
                               text="Quit/Exit",
                               bg="#F8CECC",
                               fg=button_fg,
-                              font=button_font, width=9)
+                              font=button_font, width=12)
     self.quit_button.grid(row=1, column=1, padx=5, pady=5)
+
+    self.to_instruct_button = Button(self.button_frame,
+                           text="Instructions",
+                           bg="#C3ABD0",
+                           fg=button_fg,
+                           font=button_font, width=12, command=self.to_instruct)
+
+    self.to_instruct_button.grid(row=0, column=1, padx=5, pady=5)
 
   def to_instruct(self):
    DisplayInstructions(self)
@@ -85,7 +87,7 @@ class DisplayInstructions:
     self.instructions_frame.grid()
 
     self.instructions_heading_label = Label(self.instructions_frame, bg=backround,
-                                   text="Help / Info",font="Arial 14 bold")
+                                   text="Intructions",font="Arial 14 bold")
 
     self.instructions_heading_label.grid(row=0)
 
@@ -114,15 +116,12 @@ class DisplayInstructions:
 
   def close_instructions(self, partner):
     #Put help button back to normal...
-    partner.to_help_button.config(state=NORMAL)
+    partner.to_instruct_button.config(state=NORMAL)
     self.instructions_box.destroy()
-
-
-
 
 #main routine
 if __name__ == "__main__":
   root = Tk()
   root.title("Capital City Quiz")
-  Converter()
+  GUI()
   root.mainloop()
