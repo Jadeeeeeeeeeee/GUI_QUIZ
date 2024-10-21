@@ -1,7 +1,7 @@
 from tkinter import *
 from functools import partial
 
-class GUI:
+class main_GUI:
 
   def __init__(self):
 
@@ -17,15 +17,13 @@ class GUI:
 
     self.GUI_heading.grid(row=0)
 
-    instructions = "Please select the actions you would like to do. Click start " \
-                   "to start the quiz, instructions for instructions history to" \
-                   "view previous quiz results, exit to exit the program"
+    instructions = "Please select the actions you would like to do. " 
 
 
     self.GUI_instructions = Label(self.GUI_frame,
                                   text=instructions,
-                                  wraplength=250,
-                                  width=40,
+                                  wraplength=350,
+                                  width=50,
                                   justify="left")
     self.GUI_instructions.grid(row=1)
 
@@ -37,28 +35,28 @@ class GUI:
                               text="Start Quiz",
                               bg="#DAE8FC",
                               fg=button_fg,
-                              font=button_font, width=12)
+                              font=button_font, width=10)
     self.start_button.grid(row=0, column=0, padx=5, pady=5)
 
     self.history_button = Button(self.button_frame,
                               text="History",
                               bg="#FFB366",
                               fg=button_fg,
-                              font=button_font, width=12)
+                              font=button_font, width=10)
     self.history_button.grid(row=1, column=0, padx=5, pady=5)
 
     self.quit_button = Button(self.button_frame,
-                              text="Quit/Exit",
+                              text="Quit",
                               bg="#F8CECC",
                               fg=button_fg,
-                              font=button_font, width=12)
+                              font=button_font, width=10)
     self.quit_button.grid(row=1, column=1, padx=5, pady=5)
 
     self.to_instruct_button = Button(self.button_frame,
                            text="Instructions",
                            bg="#C3ABD0",
                            fg=button_fg,
-                           font=button_font, width=12, command=self.to_instruct)
+                           font=button_font, width=10, command=self.to_instruct)
 
     self.to_instruct_button.grid(row=0, column=1, padx=5, pady=5)
 
@@ -91,21 +89,16 @@ class DisplayInstructions:
 
     self.instructions_heading_label.grid(row=0)
 
-    help_text = "To use the program, simply enter the temperature " \
-    "you wish to convert and then choose convert " \
-    "to either degrees Celcius(centigrade) or " \
-    "Fahrenheit.. \n\n" \
-    "Note that -273 degrees C " \
-    "(-459) is absulute zero (the coldest possible " \
-    "temperature). If you try to convert a " \
-    "temperature that is less than -273 degrees C, " \
-    "you will get an error message. \n\n" \
-    "To see your" \
-    "calculation history and export it into a text " \
-    "file, please click the 'History / Export' button"
+    instruction_text ='''     Functions of the four buttons in the main GUI 
+     the start quiz button: Starts the quiz 
+     the instructions button: Displays the instructions
+     the history button: Displays the history of the quiz
+     the quit button: Exits the program
+     Please enjoy using the program'''
+
 
     self.instructions_text_label = Label(self.instructions_frame, bg=backround,
-                                text=help_text, wraplength=350, justify="left")
+                                text=instruction_text, wraplength=350, justify="left")
 
     self.instructions_text_label.grid(row=1, padx=10)
 
@@ -123,5 +116,5 @@ class DisplayInstructions:
 if __name__ == "__main__":
   root = Tk()
   root.title("Capital City Quiz")
-  GUI()
+  main_GUI()
   root.mainloop()
