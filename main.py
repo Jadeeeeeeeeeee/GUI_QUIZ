@@ -1,7 +1,7 @@
 from tkinter import *
 from functools import partial
 
-class GUI:
+class main_GUI:
 
   def __init__(self):
 
@@ -89,7 +89,12 @@ class DisplayInstructions:
 
     self.instructions_heading_label.grid(row=0)
 
-    instruction_text = ''' There are four buttons in the main GUI \ '''
+    instruction_text ='''     Functions of the four buttons in the main GUI 
+     the start quiz button: Starts the quiz 
+     the instructions button: Displays the instructions
+     the history button: Displays the history of the quiz
+     the quit button: Exits the program
+     Please enjoy using the program'''
                         
 
     self.instructions_text_label = Label(self.instructions_frame, bg=backround,
@@ -111,21 +116,6 @@ class DisplayInstructions:
 if __name__ == "__main__":
   root = Tk()
   root.title("Capital City Quiz")
-  GUI()
+  main_GUI()
   root.mainloop()
 
-
-
-
-#help_text = "To use the program, simply enter the temperature " \
-#"you wish to convert and then choose convert " \
-#"to either degrees Celcius(centigrade) or " \
-#"Fahrenheit.. \n\n" \
-#"Note that -273 degrees C " \
-#"(-459) is absulute zero (the coldest possible " \
-#"temperature). If you try to convert a " \
-#"temperature that is less than -273 degrees C, " \
-#"you will get an error message. \n\n" \
-#"To see your" \
-#"calculation history and export it into a text " \
-#"file, please click the 'History / Export' button"
