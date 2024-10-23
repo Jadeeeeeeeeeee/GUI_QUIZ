@@ -1,74 +1,120 @@
-import random
-import time
-#globals and questions lists
-score = 0
-#global and quesitons lists
-country = [
-    "France", "Jamaica", "Italy", "Slovakia", "Japan", "Malaysia", "Croatia", 
-  "Indonesia", "Greece", "Switzerland"]
+from tkinter import *
+from functools import partial
 
-right_answer = [
-    "Paris", "Kingston", "Rome", "Bratislava", "Tokyo", "Kuala lumpur",
-    "Zagreb", "Jakarta", "Athens", "Bern"
-]
-option_1 = [
-    "Berlin", "Madrid", "Manila", "Dubai", "Seoul", "Wellington", "Sydney", "Canberra",
-    "Manama", "Gaborone"
-]
-option_2 = [
-    "San Jose", "Djibouti", "London", "Reykjavik", "Dublin", "Tripoli", "Monaco",
-    "Moscow", "Victoria", "Damascus"
-]
+class main_GUI:
 
+  def __init__(self):
 
-#define a function to generate a question
-def generate_question(country, right_answer, option_1, option_2):
-    global score
-    time.sleep(0.5)
-    print("\nWhat is the capital of", country)
-    random_sequence = random.randint(0, 2)
-    #seperate print statements for readability
-    if (random_sequence == 0):
-        print("A.", option_1)
-        print("B.", option_2)
-        print("C.", right_answer, "\nAnswer:")
-        answer = input().lower()
-        if answer == "c":
-            score += 1
-            print("Correct!")
-            print("Score:", score)
-        else:
-            print("Score:", score)
-            print("Incorrect!")
+    button_font = ("Arial 16 bold")
+    button_fg = "#000000"
 
-    elif (random_sequence == 1):
-        print("A.", option_1)
-        print("B.", right_answer)
-        print("C.", option_2, "\nAnswer:")
-        answer = input().lower()
-        if answer == "b":
-            print("Correct!")
-            score += 1
-            print("Score:", score)
-        else:
-            print("Score:", score)
-            print("incorrect!")
+    self.GUI_frame = Frame(padx=10, pady=10)
+    self.GUI_frame.grid()
 
-    elif (random_sequence == 2):
-        print("A.", right_answer)
-        print("B.", option_2)
-        print("C.", option_1, "\nAnswer:")
-        answer = input().lower()
-        if answer == "a":
-            print("Correct!")
-            score += 1
-            print("Score:", score)
-        else:
-            print("Incorrect!")
-            print("Score:", score)
+    self.GUI_heading = Label(self.GUI_frame,
+                             text="Capital City Quiz",
+                             font=("Arial 16 bold"), )
+
+    self.GUI_heading.grid(row=0)
+
+    instructions = "Please select the actions you would like to do. " 
 
 
-for i in range(0, 10):
-    generate_question(country[i], right_answer[i], option_1[i], option_2[i])
+    self.GUI_instructions = Label(self.GUI_frame,
+                                  text=instructions,
+                                  wraplength=350,
+                                  width=50,
+                                  justify="left")
+    self.GUI_instructions.grid(row=1)
 
 
+    self.button_frame = Frame(self.GUI_frame)
+    self.button_frame.grid(row=4)
+
+    self.start_button = Button(self.button_frame,
+                              text="Start Quiz",
+                              bg="#DAE8FC",
+                              fg=button_fg,
+                              font=button_font, width=10)
+    self.start_button.grid(row=0, column=0, padx=5, pady=5)
+
+    self.history_button = Button(self.button_frame,
+                              text="History",
+                              bg="#FFB366",
+                              fg=button_fg,
+                              font=button_font, width=10)
+    self.history_button.grid(row=1, column=0, padx=5, pady=5)
+
+    self.quit_button = Button(self.button_frame,
+                              text="Quit",
+                              bg="#F8CECC",
+                              fg=button_fg,
+                              font=button_font, width=10)
+    self.quit_button.grid(row=1, column=1, padx=5, pady=5)
+
+    self.to_instruct_button = Button(self.button_frame,
+                           text="Instructions",
+                           bg="#C3ABD0",
+                           fg=button_fg,
+                           font=button_font, width=10, command=self.to_instruct)
+
+    self.to_instruct_button.grid(row=0, column=1, padx=5, pady=5)
+
+  def to_instruct(self):
+   DisplayInstructions(self)
+
+class DisplayInstructions:
+
+
+  def __init__(self, partner):
+    #setup dialogue box and backround colour
+    backround = "#FFCFAB"
+
+    self.instructions_box = Toplevel()
+
+    #disable help button
+    partner.to_instruct_button.config(state=DISABLED)
+
+    #If users press cross at top, closses help and
+    #'releases' help button
+    self.instructions_box.protocol('WM_DELETE_WINDOW',
+                           partial(self.close_instructions, partner))
+
+    self.instructions_frame = Frame(self.instructions_box, width=300, height=200,
+                           bg=backround)
+    self.instructions_frame.grid()
+
+    self.instructions_heading_label = Label(self.instructions_frame, bg=backround,
+                                   text="Intructions",font="Arial 14 bold")
+
+    self.instructions_heading_label.grid(row=0)
+
+    instruction_text ='''     Functions of the four buttons in the main GUI 
+     the start quiz button: Starts the quiz 
+     the instructions button: Displays the instructions
+     the history button: Displays the history of the quiz
+     the quit button: Exits the program
+     Please enjoy using the program'''
+
+
+    self.instructions_text_label = Label(self.instructions_frame, bg=backround,
+                                text=instruction_text, wraplength=350, width=50, justify="left")
+
+    self.instructions_text_label.grid(row=1, padx=10)
+
+    self.dismiss_button = Button(self.instructions_frame, font=("Arial 12 bold"), 
+                                text="Dismiss", bg="#CC6000", fg="#FFFFFF",
+                                command=partial(self.close_instructions, partner)) 
+    self.dismiss_button.grid(row=2, padx=10, pady=10)
+
+  def close_instructions(self, partner):
+    #Put help button back to normal...
+    partner.to_instruct_button.config(state=NORMAL)
+    self.instructions_box.destroy()
+
+#main routine
+if __name__ == "__main__":
+  root = Tk()
+  root.title("Capital City Quiz")
+  main_GUI()
+  root.mainloop()

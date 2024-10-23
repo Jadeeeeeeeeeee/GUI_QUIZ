@@ -3,7 +3,6 @@ import time
 #globals and questions lists
 score = 0
 #global and quesitons lists
-
 country = [
     "France", "Jamaica", "Italy", "Slovakia", "Japan", "Malaysia", "Croatia", 
   "Indonesia", "Greece", "Switzerland"]
@@ -23,11 +22,11 @@ option_2 = [
 
 
 #define a function to generate a question
-def generate_question(english, right_answer, option_1, option_2):
+def generate_question(country, right_answer, option_1, option_2):
     global score
     time.sleep(0.5)
-    print("\nWhat is the maori word for", english)
-    random_sequence = random.randint(0, 3)
+    print("\nWhat is the capital of", country)
+    random_sequence = random.randint(0, 2)
     #seperate print statements for readability
     if (random_sequence == 0):
         print("A.", option_1)
@@ -70,4 +69,6 @@ def generate_question(english, right_answer, option_1, option_2):
 
 
 for i in range(0, 10):
-    generate_question(english[i], right_answer[i], option_1[i], option_2[i])
+    generate_question(country[i], right_answer[i], option_1[i], option_2[i])
+
+

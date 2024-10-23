@@ -13,7 +13,7 @@ class main_GUI:
 
     self.GUI_heading = Label(self.GUI_frame,
                              text="Capital City Quiz",
-                             font=("Arial 16 bold"))
+                             font=("Arial 16 bold"), )
 
     self.GUI_heading.grid(row=0)
 
@@ -98,7 +98,7 @@ class DisplayInstructions:
 
 
     self.instructions_text_label = Label(self.instructions_frame, bg=backround,
-                                text=instruction_text, wraplength=350, justify="left")
+                                text=instruction_text, wraplength=350, width=50, justify="left")
 
     self.instructions_text_label.grid(row=1, padx=10)
 
