@@ -5,11 +5,7 @@ import random
 
 class quiz_Gui:
 
-
-
-  def generate_question(self,question):
-
-                        
+  def generate_question(self,question):                        
 
     country = ["France", "Jamaica", "Italy", "Slovakia", "Japan", "Malaysia", 
 "Croatia", "Indonesia", "Greece", "Switzerland"]
@@ -35,9 +31,8 @@ class quiz_Gui:
     question_number = 0 
                             
                             
-    options = [right_answer[question_number]], option_1[question_number],option_2
-[question_number]
-         
+    options = [right_answer[question_number], option_1[question_number], option_2[question_number],option_3[question_number]]
+    random.shuffle(options)     
 
                             
     self.quiz_frame = Frame(padx=10, pady=10)
@@ -49,10 +44,8 @@ class quiz_Gui:
 
     self.GUI_heading.grid(row=0)
 
-    question = "What is the capital of France?"
-
     self.quiz_question = Label(self.quiz_frame,
-                                  text=question,
+                                  text=f"what is the capital of {country[question_number]}?",
                                   wraplength=250,
                                   width=40,
                                   justify="left")
