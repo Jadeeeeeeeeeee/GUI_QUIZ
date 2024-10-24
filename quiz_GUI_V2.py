@@ -25,6 +25,13 @@ class quiz_Gui:
                                   justify="left")
     self.quiz_question.grid(row=1)
 
+
+    self.result_correct = Label(self.quiz_frame,
+                               text = "Correct!",
+                               fg="#008000")
+
+    self.result_correct.grid(row=2)                         
+
     self.button_frame = Frame(self.quiz_frame)
     self.button_frame.grid(row=4)
 
@@ -55,6 +62,11 @@ class quiz_Gui:
                               fg=button_fg,
                               font=button_font, width=12)
     self.choice_d_button.grid(row=1, column=1, padx=5, pady=5)
+
+    self.result_incorrect = Label(self.quiz_frame,
+                                  text= "Incorrect!",
+                                  fg="#FF0000")
+    self.result_incorrect.grid(row=5)
 
 
 
