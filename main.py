@@ -2,10 +2,9 @@ from tkinter import *
 import random
 
 
-
 class quiz_Gui:
 
-  def __innit__(self,question):
+  def __init__(self, root):
 
     self.score = 0
     self.question_number = 0                        
@@ -91,6 +90,7 @@ class quiz_Gui:
 
     self.generate_question()
 
+
   def generate_question(self):
     options = [self.right_answer[self.question_number], 
                self.option_1[self.question_number], 
@@ -128,10 +128,8 @@ self.option_2[self.question_number],self.option_3[self.question_number]]
 
 
 
-
-
 if __name__ == "__main__":
   root = Tk()
   root.title("Capital City Quiz")
-  quiz_Gui()
+  quiz = quiz_Gui(root)
   root.mainloop()
