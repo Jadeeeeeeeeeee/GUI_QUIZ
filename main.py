@@ -1,40 +1,12 @@
 from tkinter import *
-import random
-
-
 
 class quiz_Gui:
 
-  def generate_question(self,question):                        
-
-    country = ["France", "Jamaica", "Italy", "Slovakia", "Japan", "Malaysia", 
-"Croatia", "Indonesia", "Greece", "Switzerland"]
-
-    right_answer = ["Paris", "Kingston", "Rome", "Bratislava", "Tokyo", "Kuala lumpur",
-"Zagreb", "Jakarta", "Athens", "Bern"]
-
-    option_1 = ["Berlin", "Madrid", "Manila", "Dubai", "Seoul", "Wellington", "Sydney", 
-"Canberra", "Manama", "Gaborone"]
-
-    option_2 = ["San Jose", "Djibouti", "London", "Reykjavik", "Dublin", "Tripoli", 
-"Monaco","Moscow", "Victoria", "Damascus"]
-
-    option_3 = ["Lisbon", "Cairo", "Helsinki", "Oslo", "Hanoi", "Ottawa",
-                                            "Brasilia", "Bangkok", "Stockholm", "Luxembourg"]
+  def __init__(self):
 
     button_font = ("Arial 16 bold")
     button_fg = "#000000"
 
-    global question_number,score 
-                            
-    score = 0
-    question_number = 0 
-                            
-                            
-    options = [right_answer[question_number], option_1[question_number], option_2[question_number],option_3[question_number]]
-    random.shuffle(options)     
-
-                            
     self.quiz_frame = Frame(padx=10, pady=10)
     self.quiz_frame.grid()
 
@@ -44,12 +16,22 @@ class quiz_Gui:
 
     self.GUI_heading.grid(row=0)
 
+    question = "What is the capital of France?"
+
     self.quiz_question = Label(self.quiz_frame,
-                                  text=f"what is the capital of {country[question_number]}?",
+                                  text=question,
                                   wraplength=250,
                                   width=40,
                                   justify="left")
     self.quiz_question.grid(row=1)
+
+    result_correct = "Correct!"
+
+    self.result_correct = Label(self.quiz_frame,
+                               text = result_correct,
+                               fg="#008000")
+
+    self.result_correct.grid(row=2)                         
 
     self.button_frame = Frame(self.quiz_frame)
     self.button_frame.grid(row=4)
@@ -81,6 +63,13 @@ class quiz_Gui:
                               fg=button_fg,
                               font=button_font, width=12)
     self.choice_d_button.grid(row=1, column=1, padx=5, pady=5)
+
+    result_incorrect = "Incorrect!"
+
+    self.result_incorrect = Label(self.quiz_frame,
+                                  text= result_incorrect,
+                                  fg="#FF0000")
+    self.result_incorrect.grid(row=5)
 
 
 
