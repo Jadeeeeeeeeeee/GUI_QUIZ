@@ -78,6 +78,7 @@ class quiz_Gui:
     self.result_correct = Label(self.quiz_frame,
                           text = "",
                           fg="#008000")
+    self.result_correct.grid(row=2)                        
 
     self.result_incorrect = Label(self.quiz_frame,
                                   text= "",
