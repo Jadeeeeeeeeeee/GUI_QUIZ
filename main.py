@@ -75,15 +75,9 @@ class quiz_Gui:
                               font=button_font, width=12)
     self.choice_d_button.grid(row=1, column=1, padx=5, pady=5)
 
-    self.result_correct = Label(self.quiz_frame,
-                          text = "",
-                          fg="#008000")
-    self.result_correct.grid(row=2)                        
-
-    self.result_incorrect = Label(self.quiz_frame,
-                                  text= "",
-                                  fg="#FF0000")
-    self.result_incorrect.grid(row=5)
+    self.result = Label(self.quiz_frame,
+                          text = "")
+    self.result.grid(row=2)                        
 
     self.score_label = Label(self.quiz_frame, text="Score: 0",
                              font=button_font)                        
@@ -110,10 +104,10 @@ self.option_2[self.question_number],self.option_3[self.question_number]]
 
   def check_answer(self, answer):
     if answer == self.right_answer[self.question_number]:
-        self.result_correct.config(text="Correct!")  
+        self.result.config(text="Correct!", fg="#008000")  
         self.score += 1
     else:
-        self.result_incorrect.config(text=f"Incorrect!, the right answer is {self.right_answer[self.question_number]}")
+        self.result.config(text=f"Incorrect!, the right answer is {self.right_answer[self.question_number]}", fg="#FF0000")
 
     self.score_label.config(text=f"Score: {self.score}")
 
