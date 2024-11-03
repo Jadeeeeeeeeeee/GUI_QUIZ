@@ -113,7 +113,7 @@ class quiz_Gui:
     self.GUI_heading.grid(row=0)
 
     self.quiz_question = Label(self.quiz_frame,
-                                  text="",
+                                  text="",font="Arial 12",
                                   wraplength=250,
                                   width=40,
                                   justify="left")
@@ -197,9 +197,9 @@ self.option_2[self.question_number],self.option_3[self.question_number]]
        self.choice_d_button.config(state=DISABLED)
 
        self.exit_button = Button(self.button_frame, font=("Arial 16 bold"),
-                                 text="Exit", bg="#CC6000", fg="#FFFFFF", width=10,
+                                 text="Exit", bg="#FF3333", fg="#FFFFFF", width=10,
                                  command=partial(self.close_quiz, self.partner))
-       self.exit_button.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+       self.exit_button.grid(row=5, column=0, columnspan=2, padx=10, pady=5)
   
   def close_quiz(self, partner):
     partner.start_button.config(state=NORMAL)
