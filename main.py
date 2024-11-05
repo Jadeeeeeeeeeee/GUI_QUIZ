@@ -157,7 +157,8 @@ class quiz_Gui:
     self.result.grid(row=2)                        
 
     self.score_label = Label(self.quiz_frame, text="Score: 0",
-                             font=button_font)                        
+                             font=button_font)
+    self.score_label.grid(row=3)                        
 
 
     self.generate_question()
