@@ -4,12 +4,13 @@ import random
 
 class main_GUI:
 
-  def __init__(self):
+  def __init__(self, root):
 
+    self.root = root
     button_font = ("Arial 16 bold")
     button_fg = "#000000"
 
-    self.GUI_frame = Frame(padx=10, pady=10)
+    self.GUI_frame = Frame(root, padx=10, pady=10)
     self.GUI_frame.grid()
 
     self.GUI_heading = Label(self.GUI_frame,
@@ -50,7 +51,8 @@ class main_GUI:
                               text="Quit",
                               bg="#F8CECC",
                               fg=button_fg,
-                              font=button_font, width=10)
+                              font=button_font, width=10,
+                              command=self.root.destroy)
     self.quit_button.grid(row=1, column=1, padx=5, pady=5)
 
     self.to_instruct_button = Button(self.button_frame,
@@ -258,5 +260,5 @@ class DisplayInstructions:
 if __name__ == "__main__":
   root = Tk()
   root.title("Capital City Quiz")
-  main_GUI()
+  main_GUI(root)
   root.mainloop()
