@@ -277,11 +277,15 @@ class DisplayInstructions:
     self.instructions_heading_label.grid(row=0)
 
     instruction_text ='''     Functions of the four buttons in the main GUI 
-     the start quiz button: Starts the quiz 
-     the instructions button: Displays the instructions
-     the history button: Displays the history of the quiz
-     the quit button: Exits the program
-     Please enjoy using the program'''
+     -the start quiz button: Starts the quiz 
+     -the instructions button: Displays the instructions
+     -the history button: Displays the history of the quiz
+     -the quit button: Exits the program
+     -the tickbox for saving history:
+      when ticked: saves hisotry and makes another file 
+      with the history in it
+      not ticked: doesn't save history
+      Please enjoy using the program!'''
 
 
     self.instructions_text_label = Label(self.instructions_frame, bg=backround,
