@@ -1,5 +1,7 @@
 import random
 import time
+
+#This code is a used code from an assesment in year 11
 #globals and questions lists
 score = 0
 #global and quesitons lists

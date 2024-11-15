@@ -2,11 +2,14 @@ from tkinter import *
 from functools import partial
 import random 
 
+#Set up the GUI for the program
 class main_GUI:
 
   def __init__(self, root):
 
     self.root = root
+    #common format for all buttons
+    #common fonts
     button_font = ("Arial 16 bold")
     button_fg = "#000000"
 
@@ -203,11 +206,32 @@ self.option_2[self.question_number],self.option_3[self.question_number]]
                                  text="Exit", bg="#FF3333", fg="#FFFFFF", width=10,
                                  command=partial(self.close_quiz, self.partner))
        self.exit_button.grid(row=5, column=0, columnspan=2, padx=10, pady=5)
-  
+
   def close_quiz(self, partner):
     partner.start_button.config(state=NORMAL)
     self.quiz_box.destroy()
 
+  
+
+class quiz_history:
+  def __init__(self):
+    self.history_box = Toplevel()
+    self.history_box.title("Quiz History")
+
+    Label(self.history_box, text="Quiz History", font=("Arial 14 bold")).pack(pady=10)
+
+    self.history_text = Text(self.history_box, wrap="word", width=50, height=20)
+    self.history_text.pack(pady=10)
+
+    self.load_history
+
+  def load_history(self):
+    try:
+      with open("quiz_history.txt", "r") as file:
+        history = file.read()
+        self.history_text.insert("1.0", history)
+    except FileNotFoundError:
+      self.history_text.insert("1.0", "No history available")
 class DisplayInstructions:
 
 

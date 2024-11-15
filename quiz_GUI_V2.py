@@ -1,5 +1,6 @@
 from tkinter import *
 
+
 class quiz_Gui:
 
   def __init__(self):
