@@ -13,6 +13,11 @@ class main_GUI:
     button_font = ("Arial 16 bold")
     button_fg = "#000000"
 
+    with open("quiz_history.txt", "w") as file:
+      pass
+
+    self.save_history = IntVar()
+
     self.GUI_frame = Frame(root, padx=10, pady=10)
     self.GUI_frame.grid()
 
@@ -32,6 +37,9 @@ class main_GUI:
                                   justify="left")
     self.GUI_instructions.grid(row=1)
 
+    self.save_history_checkbox = Checkbutton(self.GUI_frame, text="Save History", variable=self.save_history)
+    self.save_history_checkbox.grid(row=2, sticky="w")
+
 
     self.button_frame = Frame(self.GUI_frame)
     self.button_frame.grid(row=4)
@@ -47,7 +55,7 @@ class main_GUI:
                               text="History",
                               bg="#FFB366",
                               fg=button_fg,
-                              font=button_font, width=10)
+                              font=button_font, width=10, command=self.show_history)
     self.history_button.grid(row=1, column=0, padx=5, pady=5)
 
     self.quit_button = Button(self.button_frame,
@@ -71,6 +79,9 @@ class main_GUI:
 
   def start_quiz(self):
     quiz_Gui(self)
+
+  def show_history(self):
+    quiz_history()
  
 
 
@@ -202,6 +213,10 @@ self.option_2[self.question_number],self.option_3[self.question_number]]
        self.choice_c_button.config(state=DISABLED)
        self.choice_d_button.config(state=DISABLED)
 
+       if self.partner.save_history.get() == 1:
+         with open("quiz_history.txt", "a") as file:
+           file.write(f"Score: {self.score}\n")
+
        self.exit_button = Button(self.button_frame, font=("Arial 16 bold"),
                                  text="Exit", bg="#FF3333", fg="#FFFFFF", width=10,
                                  command=partial(self.close_quiz, self.partner))
@@ -220,18 +235,21 @@ class quiz_history:
 
     Label(self.history_box, text="Quiz History", font=("Arial 14 bold")).pack(pady=10)
 
-    self.history_text = Text(self.history_box, wrap="word", width=50, height=20)
+    self.history_text = Text(self.history_box, wrap="word", width=30, height=15)
     self.history_text.pack(pady=10)
 
-    self.load_history
+    self.load_history()
 
   def load_history(self):
     try:
       with open("quiz_history.txt", "r") as file:
-        history = file.read()
-        self.history_text.insert("1.0", history)
+        history = file.read().strip()
+        message = history if history else "No history available yet."
     except FileNotFoundError:
-      self.history_text.insert("1.0", "No history available")
+      message = "No history available yet"
+
+    self.history_text.insert("1.0", message)
+
 class DisplayInstructions:
 
 
