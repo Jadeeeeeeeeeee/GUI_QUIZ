@@ -1,49 +1,53 @@
+#imports
 from tkinter import *
 from functools import partial
 import random 
 
-#Set up the GUI for the program
+#Set up the main GUI for the program
 class main_GUI:
 
   def __init__(self, root):
 
     self.root = root
-    #common format for all buttons
-    #common fonts
+    #common button format and fonts
     button_font = ("Arial 16 bold")
     button_fg = "#000000"
 
+    #clear saved history upon start up
     with open("quiz_history.txt", "w") as file:
       pass
-
+    
+    #Variable for tracking if history should be saved
     self.save_history = IntVar()
-
+    #Make the main GUI frame
     self.GUI_frame = Frame(root, padx=10, pady=10)
     self.GUI_frame.grid()
 
+    #heading label
     self.GUI_heading = Label(self.GUI_frame,
                              text="Capital City Quiz",
                              font=("Arial 16 bold"), )
 
     self.GUI_heading.grid(row=0)
-
-    instructions = "Please select the actions you would like to do. " 
+    #Instructions
+    Greetings = "Greetings!, please select the actions you would like to do. " 
 
 
     self.GUI_instructions = Label(self.GUI_frame,
-                                  text=instructions,
+                                  text=Greetings,
                                   wraplength=350,
                                   width=50,
                                   justify="left")
     self.GUI_instructions.grid(row=1)
-
+    #Checkbox for saving quiz history
     self.save_history_checkbox = Checkbutton(self.GUI_frame, text="Save History", variable=self.save_history)
     self.save_history_checkbox.grid(row=2, sticky="w")
 
-
+    #Create button frame
     self.button_frame = Frame(self.GUI_frame)
     self.button_frame.grid(row=4)
 
+    #create buttons for different functions
     self.start_button = Button(self.button_frame,
                               text="Start",
                               bg="#DAE8FC",
@@ -73,7 +77,7 @@ class main_GUI:
                            font=button_font, width=10, command=self.to_instruct)
 
     self.to_instruct_button.grid(row=0, column=1, padx=5, pady=5)
-
+  
   def to_instruct(self):
    DisplayInstructions(self)
 
